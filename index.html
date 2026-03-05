@@ -5,22 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>8 Марта — Жумабаева Насуха Жолдасбековна — Genesis Auto Kazakhstan</title>
 
-  <!-- ✅ Нежные шрифты как в примере -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* читаемые тексты */
       --ink: rgba(12,14,16,.90);
       --ink2: rgba(12,14,16,.74);
 
-      /* нежный пудровый акцент */
       --accent:#c6a1a8;
       --accent2:#b58f98;
 
-      /* карточки */
       --cardTop: rgba(255,255,255,.80);
       --cardBot: rgba(255,255,255,.60);
       --border: rgba(255,255,255,.65);
@@ -42,7 +39,7 @@
       overflow-x:hidden;
     }
 
-    /* ✅ Белый корпоративный фон (без Background.png) */
+    /* Background (white corporate) */
     .bg{
       position:fixed;
       inset:0;
@@ -62,30 +59,11 @@
       pointer-events:none;
     }
 
-    /* ✅ Всплывающий логотип */
-    .floating-logo{
-      position:fixed;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(210px, 66vw);
-      height:auto;
-      z-index: 10;
-      opacity:.98;
-      filter: drop-shadow(0 10px 22px rgba(0,0,0,.10));
-      animation: floatLogo 4.6s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes floatLogo{
-      0%,100%{ transform: translateX(-50%) translateY(0); }
-      50%{ transform: translateX(-50%) translateY(-8px); }
-    }
-
     /* Layout */
     .wrap{
       width:min(var(--maxw),92vw);
       margin:0 auto;
-      padding: 78px 0 110px; /* место под логотип */
+      padding: 22px 0 110px;
     }
     section{
       position:relative;
@@ -94,7 +72,7 @@
       text-align:center;
     }
 
-    /* Transparent cards */
+    /* Cards */
     .card{
       position:relative;
       background: linear-gradient(180deg, var(--cardTop), var(--cardBot));
@@ -108,6 +86,15 @@
 
       overflow:hidden;
       z-index:1;
+
+      /* reveal */
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .card.revealed{
+      opacity:1;
+      transform: translateY(0);
     }
     .card:before{
       content:"";
@@ -133,7 +120,7 @@
       margin:0;
     }
     .h-script{
-      font-size: clamp(40px, 7.6vw, 54px);
+      font-size: clamp(42px, 7.8vw, 56px);
       margin: 0 0 10px;
     }
     .divider{
@@ -142,15 +129,17 @@
       margin:18px auto;
       background: linear-gradient(to right, transparent, rgba(181,143,152,.60), transparent);
     }
+
+    /* ✅ текст чуть больше */
     .p{
-      font-size: 20px;
-      line-height: 1.9;
+      font-size: 22px;
+      line-height: 1.95;
       color: var(--ink);
-      margin: 10px 0 0;
+      margin: 12px 0 0;
     }
     .small{
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 17px;
+      line-height: 1.8;
       color: var(--ink2);
       margin: 10px 0 0;
     }
@@ -158,17 +147,30 @@
     /* Hero */
     .hero{
       display:grid;
-      gap: 10px;
+      gap: 12px;
       place-items:center;
     }
     .hero-title{
-      font-size: clamp(44px, 9.5vw, 66px);
+      font-size: clamp(46px, 9.7vw, 68px);
       line-height: 1;
       margin: 8px 0 0;
       letter-spacing: .01em;
     }
 
-    /* ✅ main_photo.png в кругу */
+    /* ✅ Логотип сверху красиво (НЕ fixed) */
+    .hero-logo{
+      width: min(220px, 70vw);
+      height:auto;
+      opacity:.98;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,.10));
+      animation: logoFloat 4.6s ease-in-out infinite;
+    }
+    @keyframes logoFloat{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
+
+    /* Main photo in circle */
     .hero-img{
       width: min(280px, 76vw);
       aspect-ratio: 1 / 1;
@@ -192,11 +194,17 @@
     }
 
     /* Buttons */
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 10px;
+    }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      margin-top:16px;
       padding: 14px 26px;
       border-radius: 999px;
 
@@ -215,9 +223,17 @@
 
       transition: transform .15s ease, filter .15s ease;
       -webkit-tap-highlight-color: transparent;
+      cursor:pointer;
     }
     .btn:hover{ filter: brightness(1.06); }
     .btn:active{ transform: scale(.985); }
+
+    .btn.secondary{
+      background: linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.42));
+      color: rgba(12,14,16,.86) !important;
+      border: 1px solid rgba(198,161,168,.28);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+    }
 
     /* Chips */
     .chips{
@@ -309,7 +325,7 @@
       transform: scale(1.12);
     }
 
-    /* Text blocks inside congrats */
+    /* Text blocks */
     .flow{
       text-align:left;
       margin-top: 10px;
@@ -350,8 +366,8 @@
       font-family:"Cinzel", serif;
     }
     .mini .v{
-      font-size: 18px;
-      line-height: 1.75;
+      font-size: 19px;
+      line-height: 1.8;
       color: rgba(12,14,16,.84);
     }
 
@@ -392,7 +408,7 @@
       gap: 10px;
       flex-wrap:wrap;
     }
-    .unit{ min-width: 86px; text-align:center; }
+    .unit{ min-width: 90px; text-align:center; }
     .flip{
       background: linear-gradient(135deg, rgba(198,161,168,.92), rgba(181,143,152,.92));
       color:#fff;
@@ -427,11 +443,29 @@
       font-family:"Cinzel", serif;
     }
 
+    /* Floating "up" button */
+    .toTop{
+      position:fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      opacity:0;
+      transform: translateY(10px);
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toTop.show{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
+
     @media(max-width:420px){
       .caps{ font-size: 14px; }
       .unit{ min-width: 78px; }
       .flip{ font-size: 30px; }
       .btn{ font-size: 12px; padding: 14px 22px; }
+      .p{ font-size: 20px; }
     }
   </style>
 </head>
@@ -440,15 +474,16 @@
   <div class="bg"></div>
   <div class="veil"></div>
 
-  <!-- ✅ ЛОГОТИП (всплывает) -->
-  <img class="floating-logo" src="./GEN_Wing_positive(filled)_RGB_low.png" alt="Genesis">
-
   <main class="wrap">
 
     <!-- 1) HERO -->
     <section id="top">
       <div class="card">
         <div class="hero">
+
+          <!-- ✅ Логотип сверху, красиво, но НЕ fixed -->
+          <img class="hero-logo" src="./GEN_Wing_positive(filled)_RGB_low.png" alt="Genesis">
+
           <p class="caps">Genesis Auto Kazakhstan</p>
           <div class="script hero-title">С 8 Марта</div>
 
@@ -461,7 +496,15 @@
           <p class="caps" style="margin-top:2px;">Жумабаева Насуха Жолдасбековна</p>
           <p class="small">Юрист</p>
 
-          <a class="btn" href="#congrats">Открыть поздравление</a>
+          <div class="btns">
+            <a class="btn" href="#congrats">Открыть поздравление</a>
+            <button class="btn secondary" type="button" id="btnShare">Поделиться</button>
+            <button class="btn secondary" type="button" id="btnPrint">Печать / PDF</button>
+          </div>
+
+          <p class="small" id="shareHint" style="display:none; margin-top:10px;">
+            Ссылка скопирована ✅
+          </p>
         </div>
       </div>
     </section>
@@ -544,7 +587,7 @@
       </div>
     </section>
 
-    <!-- 4) ✅ Галерея (переименовано) -->
+    <!-- 4) Галерея -->
     <section id="gallery">
       <div class="card">
         <div class="script h-script">Галерея</div>
@@ -690,6 +733,11 @@
 
   </main>
 
+  <!-- Floating "up" button -->
+  <div class="toTop" id="toTop">
+    <a class="btn" href="#top">Наверх ↑</a>
+  </div>
+
   <script>
     // Smooth anchor scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -701,6 +749,31 @@
         el.scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
+
+    // Reveal cards on scroll
+    (function revealCards(){
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            en.target.classList.add('revealed');
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.14 });
+      cards.forEach(c=>io.observe(c));
+      // first card immediate
+      if(cards[0]) cards[0].classList.add('revealed');
+    })();
+
+    // Show "to top" button after some scroll
+    (function toTop(){
+      const btn = document.getElementById('toTop');
+      window.addEventListener('scroll', ()=>{
+        if(window.scrollY > 520) btn.classList.add('show');
+        else btn.classList.remove('show');
+      }, {passive:true});
+    })();
 
     // Gallery slider
     (function gallery(){
@@ -784,6 +857,53 @@
 
     tickBirthday();
     setInterval(tickBirthday, 1000);
+
+    // Share / Copy link / Print
+    (function actions(){
+      const btnShare = document.getElementById('btnShare');
+      const btnPrint = document.getElementById('btnPrint');
+      const hint = document.getElementById('shareHint');
+
+      function toast(){
+        hint.style.display = 'block';
+        clearTimeout(window.__t);
+        window.__t = setTimeout(()=> hint.style.display = 'none', 1600);
+      }
+
+      async function copyLink(){
+        try{
+          await navigator.clipboard.writeText(location.href);
+          toast();
+        }catch(e){
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = location.href;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          toast();
+        }
+      }
+
+      btnShare.addEventListener('click', async ()=>{
+        const data = {
+          title: document.title,
+          text: 'Поздравление с 8 Марта',
+          url: location.href
+        };
+        if(navigator.share){
+          try{ await navigator.share(data); }
+          catch(e){ /* user cancelled */ }
+        }else{
+          await copyLink();
+        }
+      });
+
+      btnPrint.addEventListener('click', ()=>{
+        window.print();
+      });
+    })();
   </script>
 </body>
 </html>
