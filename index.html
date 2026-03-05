@@ -1,1 +1,815 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>8 Марта — Жумабаева Насуха Жолдасбековна — Genesis Auto Almaty</title>
 
+  <!-- ✅ Local Genesis fonts (из вашей папки) -->
+  <style>
+    @font-face{
+      font-family:"GenesisSansHead";
+      src:url("./GenesisSansHeadGlobal-Light.ttf") format("truetype");
+      font-weight:300;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"GenesisSansText";
+      src:url("./GenesisSansTextGlobal-Regular.ttf") format("truetype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"GenesisSansText";
+      src:url("./GenesisSansTextGlobal-Medium.ttf") format("truetype");
+      font-weight:500;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"GenesisSansText";
+      src:url("./GenesisSansTextGlobal-Bold.ttf") format("truetype");
+      font-weight:700;
+      font-style:normal;
+      font-display:swap;
+    }
+
+    :root{
+      --ink: rgba(12,14,16,.92);
+      --ink2: rgba(12,14,16,.72);
+
+      /* корпоративная “тёплая” палитра (на белом) */
+      --accent:#c9a2a9;
+      --accent2:#b58f98;
+
+      --cardTop: rgba(255,255,255,.86);
+      --cardBot: rgba(255,255,255,.68);
+      --border: rgba(0,0,0,.06);
+
+      --shadow: 0 18px 46px rgba(0,0,0,.08);
+      --shadow2: 0 14px 30px rgba(181,143,152,.22);
+
+      --maxw: 720px;
+      --radius: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      overflow-x:hidden;
+      font-family: "GenesisSansText", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* ✅ Белый корпоративный фон */
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(900px 700px at 50% 0%, rgba(201,162,169,.12), rgba(255,255,255,0) 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(181,143,152,.10), rgba(255,255,255,0) 55%),
+        linear-gradient(to bottom, #ffffff, #ffffff);
+      z-index:-3;
+    }
+    .veil{
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(1200px 900px at 50% 18%, rgba(255,255,255,.65), rgba(255,255,255,.18)),
+        linear-gradient(to bottom, rgba(201,162,169,.05), rgba(255,255,255,.0));
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    /* ✅ “Всплывающий” логотип */
+    .floating-logo{
+      position:fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(210px, 66vw);
+      height:auto;
+      z-index: 10;
+      opacity:.96;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.10));
+      animation: floatLogo 4.6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes floatLogo{
+      0%,100%{ transform: translateX(-50%) translateY(0); }
+      50%{ transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* Layout */
+    .wrap{
+      width:min(var(--maxw),92vw);
+      margin:0 auto;
+      padding: 78px 0 110px; /* ✅ место под логотип сверху */
+    }
+    section{
+      position:relative;
+      padding: 18px 10px;
+      margin: 14px auto;
+      text-align:center;
+    }
+
+    /* Cards */
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, var(--cardTop), var(--cardBot));
+      border-radius: var(--radius);
+      padding: 28px 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+      z-index:1;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-40% -30%;
+      background: radial-gradient(circle at 30% 20%, rgba(201,162,169,.16), rgba(255,255,255,0) 60%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    /* Type */
+    .script{
+      font-family: "GenesisSansHead", "GenesisSansText", system-ui, sans-serif;
+      color:var(--accent2);
+      letter-spacing:.02em;
+      text-shadow: 0 10px 28px rgba(181,143,152,.12);
+    }
+    .caps{
+      font-family: "GenesisSansText", system-ui, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color: rgba(12,14,16,.70);
+      font-size:13px;
+      margin:0;
+    }
+    .hero-title{
+      font-size: clamp(34px, 8.6vw, 56px);
+      line-height: 1.05;
+      margin: 8px 0 0;
+      letter-spacing: .02em;
+    }
+    .h-script{
+      font-size: clamp(26px, 6.6vw, 40px);
+      margin: 0 0 10px;
+    }
+    .divider{
+      height:1px;
+      width:min(420px,82%);
+      margin:18px auto;
+      background: linear-gradient(to right, transparent, rgba(181,143,152,.55), transparent);
+    }
+    .p{
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin: 10px 0 0;
+      font-family: "GenesisSansText", system-ui, sans-serif;
+    }
+    .small{
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink2);
+      margin: 10px 0 0;
+      font-family: "GenesisSansText", system-ui, sans-serif;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      gap: 10px;
+      place-items:center;
+    }
+
+    /* ✅ MAIN PHOTO В КРУГУ */
+    .hero-img{
+      width: min(270px, 72vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow:hidden;
+      box-shadow: 0 18px 48px rgba(0,0,0,.10);
+      border: 2px solid rgba(201,162,169,.32);
+      background: rgba(255,255,255,.9);
+      display:block;
+      position:relative;
+    }
+    .hero-img img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+      display:block;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:16px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(201,162,169,.95), rgba(181,143,152,.95));
+      color:#fff !important;
+      text-decoration:none !important;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-family: "GenesisSansText", system-ui, sans-serif;
+      font-weight:600;
+      box-shadow: var(--shadow2);
+      border: 1px solid rgba(255,255,255,.70);
+      outline:none;
+      transition: transform .15s ease, filter .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover{ filter: brightness(1.06); }
+    .btn:active{ transform: scale(.985); }
+
+    /* Chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top: 14px;
+    }
+    .chip{
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.06);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.72);
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:600;
+    }
+
+    /* Gallery */
+    .gallery{
+      margin-top: 14px;
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 16px 40px rgba(0,0,0,.06);
+    }
+    .g-stage{
+      position:relative;
+      aspect-ratio: 4 / 5;
+      width:100%;
+      overflow:hidden;
+      background: rgba(255,255,255,.60);
+    }
+    .g-stage img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      opacity:0;
+      transition: opacity .35s ease;
+    }
+    .g-stage img.active{ opacity:1; }
+    .g-controls{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding: 12px;
+      align-items:center;
+      background: rgba(255,255,255,.62);
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .g-controls button{
+      border:none;
+      border-radius:999px;
+      padding: 12px 18px;
+      cursor:pointer;
+      background: linear-gradient(135deg, rgba(201,162,169,.95), rgba(181,143,152,.95));
+      color:#fff;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size: 11px;
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:700;
+      box-shadow: 0 10px 22px rgba(198,161,168,.16);
+    }
+    .dots{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      flex:1;
+      align-items:center;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.9);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .dot.on{
+      background: rgba(181,143,152,.92);
+      transform: scale(1.12);
+    }
+
+    /* Text blocks */
+    .flow{ text-align:left; margin-top: 10px; }
+    .flow p{ margin: 12px 0 0; }
+    .subhead{
+      margin-top: 18px;
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(181,143,152,.98);
+      text-align:center;
+      font-weight:700;
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      gap: 12px;
+      margin-top: 14px;
+      text-align:left;
+    }
+    .mini{
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      padding: 14px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .mini .t{
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.70);
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-family:"GenesisSansText", system-ui, sans-serif;
+    }
+    .mini .v{
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(12,14,16,.86);
+      font-family:"GenesisSansText", system-ui, sans-serif;
+    }
+
+    /* Tags */
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top: 14px;
+    }
+    .tag{
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.06);
+      color: rgba(12,14,16,.74);
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:700;
+    }
+
+    /* Countdown */
+    .countdown{ margin-top: 18px; text-align:center; }
+    .count-title{
+      text-align:center;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      color: rgba(12,14,16,.66);
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:800;
+    }
+    .digits{
+      display:flex;
+      justify-content:center;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .unit{ min-width: 86px; text-align:center; }
+    .flip{
+      background: linear-gradient(135deg, rgba(201,162,169,.95), rgba(181,143,152,.95));
+      color:#fff;
+      border-radius: 14px;
+      padding: 12px 10px;
+      font-size: 32px;
+      line-height: 1;
+      box-shadow: 0 14px 26px rgba(198,161,168,.14);
+      font-variant-numeric: tabular-nums;
+      border: 1px solid rgba(255,255,255,.55);
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:800;
+    }
+    .lab{
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.62);
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:800;
+    }
+
+    .sign{
+      margin-top: 14px;
+      font-size: clamp(18px, 4.6vw, 26px);
+      font-weight:700;
+    }
+    .footer-sign{
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.60);
+      line-height: 1.7;
+      font-family:"GenesisSansText", system-ui, sans-serif;
+      font-weight:800;
+    }
+
+    @media(max-width:420px){
+      .caps{ font-size: 12px; }
+      .unit{ min-width: 78px; }
+      .flip{ font-size: 28px; }
+      .btn{ font-size: 11px; padding: 14px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="veil"></div>
+
+  <!-- ✅ ЛОГОТИП -->
+  <img class="floating-logo" src="./GEN_Wing_positive(filled)_RGB_low.png" alt="Genesis">
+
+  <main class="wrap">
+
+    <!-- 1) HERO -->
+    <section id="top">
+      <div class="card">
+        <div class="hero">
+          <p class="caps">Genesis Auto Almaty</p>
+          <div class="script hero-title">С 8 Марта</div>
+
+          <!-- ✅ круглая фотография -->
+          <div class="hero-img">
+            <img src="./main_photo.png" alt="Жумабаева Насуха Жолдасбековна">
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="caps" style="margin-top:2px;">Жумабаева Насуха Жолдасбековна</p>
+          <p class="small">Юрист</p>
+
+          <a class="btn" href="#congrats">Открыть поздравление</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Поздравление -->
+    <section id="congrats">
+      <div class="card">
+        <div class="script h-script">💐 Поздравление от коллектива</div>
+
+        <div class="flow">
+          <p class="p">
+            Насуха Жолдасбековна,<br>
+            примите самые тёплые и искренние поздравления
+            с Международным женским днём — 8 Марта
+            от коллектива <b>Genesis Auto Almaty</b>.
+          </p>
+
+          <p class="p">
+            Вы — наш любимый и многоуважаемый юрист: человек, которому доверяют сложные вопросы,
+            важные решения и спокойствие в самых напряжённых ситуациях.
+          </p>
+
+          <p class="p">
+            Ваш профессионализм, точность, принципиальность и умение видеть риски заранее —
+            это настоящая опора для команды. Благодаря Вам многое становится яснее, безопаснее
+            и правильно оформленным до последней детали.
+          </p>
+
+          <div class="subhead">⚖️ О Вас</div>
+
+          <p class="p">
+            В Вас особенно ценится уверенная выдержка: Вы умеете спокойно разложить по полочкам даже то,
+            что другим кажется «невозможным», и найти верное решение без лишних эмоций — по фактам и по сути.
+          </p>
+
+          <p class="p">
+            Вы защищаете интересы компании, бережёте нашу репутацию и помогаете каждому чувствовать,
+            что рядом есть надёжная юридическая поддержка.
+          </p>
+
+          <div class="subhead">🌸 Пожелания</div>
+
+          <p class="p">
+            Пусть в жизни будет больше лёгкости, радостных событий и приятных поводов для улыбки,
+            а в работе — уважение, признание и уверенность, что Ваш труд действительно ценят.
+          </p>
+
+          <p class="p">
+            Желаем крепкого здоровья, гармонии, благополучия и тепла в семье.
+            Пусть каждый день приносит хорошие новости и внутреннее спокойствие.
+          </p>
+
+          <p class="p">
+            С уважением и самыми добрыми пожеланиями —<br>
+            <b>коллектив Genesis Auto Almaty</b> 💐
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) О Вас (кратко) -->
+    <section id="about">
+      <div class="card">
+        <div class="script h-script">О Вас</div>
+
+        <p class="p">
+          Вы — символ порядка и справедливости в наших процессах:
+          там, где требуется точность, ответственность и уверенное слово.
+        </p>
+        <p class="p">
+          С Вами спокойно — потому что Вы всегда держите рамки, сроки и формулировки под контролем.
+        </p>
+
+        <div class="chips" aria-label="Профиль">
+          <div class="chip">Genesis Auto Almaty</div>
+          <div class="chip">Юридическая поддержка</div>
+          <div class="chip">Точность</div>
+          <div class="chip">Надёжность</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Галерея -->
+    <section id="gallery">
+      <div class="card">
+        <div class="script h-script">Как Вас видит ИИ</div>
+
+        <div class="gallery" aria-label="Галерея">
+          <div class="g-stage" id="gStage">
+            <img src="./1_photo.png" alt="AI образ 1" class="active">
+            <img src="./2_photo.png" alt="AI образ 2">
+            <img src="./3_photo.png" alt="AI образ 3">
+            <img src="./4_photo.png" alt="AI образ 4">
+            <img src="./5_photo.png" alt="AI образ 5">
+          </div>
+          <div class="g-controls">
+            <button type="button" id="gPrev">Назад</button>
+            <div class="dots" id="gDots" aria-label="Индикаторы"></div>
+            <button type="button" id="gNext">Вперёд</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Знак и стихия (по ДР 06.04) -->
+    <section id="astro">
+      <div class="card">
+        <div class="script h-script">Ваш знак и стихия</div>
+
+        <div class="chips" style="margin-top:10px;">
+          <div class="chip">♈ Овен</div>
+          <div class="chip">Стихия: Огонь</div>
+          <div class="chip">Планета: Марс</div>
+          <div class="chip">Дата: 6 апреля</div>
+        </div>
+
+        <p class="p" style="margin-top:14px;">
+          Овен — это уверенность, прямота и внутренняя сила.
+          Такие люди держат слово, защищают границы и умеют быть опорой — особенно там,
+          где важны принципы и ответственность.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6) Сильные стороны -->
+    <section id="strengths">
+      <div class="card">
+        <div class="script h-script">Ваши сильные стороны</div>
+
+        <div class="grid">
+          <div class="mini">
+            <div class="t">Позиция</div>
+            <div class="v">
+              Вы уверенно отстаиваете интересы компании и не боитесь сложных разговоров —
+              при этом всегда корректно и профессионально.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Точность</div>
+            <div class="v">
+              Формулировки, сроки, риски и детали — всё под контролем.
+              С Вами документы «живут правильно».
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Надёжность</div>
+            <div class="v">
+              На Вас можно положиться: Вы держите процесс и даёте чувство уверенности всей команде.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Тактичность</div>
+            <div class="v">
+              Вы умеете объяснить сложное простым языком, сохраняя уважение и к людям, и к делу.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7) Комплименты -->
+    <section id="compliments">
+      <div class="card">
+        <div class="script h-script">В Вас особенно ценно</div>
+        <div class="tags">
+          <div class="tag">Принципиальность</div>
+          <div class="tag">Профессионализм</div>
+          <div class="tag">Точность</div>
+          <div class="tag">Надёжность</div>
+          <div class="tag">Уверенность</div>
+          <div class="tag">Уважение</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) Финал -->
+    <section id="final">
+      <div class="card">
+        <div class="script h-script">С теплом и уважением</div>
+        <p class="p">
+          Пусть будет больше спокойных дней, приятных событий
+          и поводов для искренней улыбки 💐
+        </p>
+
+        <div class="script sign">Коллектив Genesis Auto Almaty</div>
+      </div>
+    </section>
+
+    <!-- 9) Обратный отсчёт до ДР -->
+    <section id="bday">
+      <div class="card">
+        <div class="script h-script">До Вашего дня рождения</div>
+
+        <div class="countdown">
+          <p class="count-title">Осталось:</p>
+          <div class="digits">
+            <div class="unit">
+              <div class="flip" id="bDays">00</div>
+              <div class="lab">дней</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bHours">00</div>
+              <div class="lab">часов</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bMins">00</div>
+              <div class="lab">минут</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bSecs">00</div>
+              <div class="lab">секунд</div>
+            </div>
+          </div>
+
+          <div class="footer-sign" style="margin-top:14px;">
+            И пусть каждый день до него будет светлым 🌸
+          </div>
+        </div>
+
+        <a class="btn" href="#top" style="margin-top:18px;">Наверх</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // Gallery slider
+    (function gallery(){
+      const stage = document.getElementById('gStage');
+      const imgs = Array.from(stage.querySelectorAll('img'));
+      const dotsWrap = document.getElementById('gDots');
+      const prev = document.getElementById('gPrev');
+      const next = document.getElementById('gNext');
+
+      let i = 0;
+
+      function buildDots(){
+        dotsWrap.innerHTML = '';
+        imgs.forEach((_, idx)=>{
+          const d = document.createElement('div');
+          d.className = 'dot' + (idx===i ? ' on' : '');
+          d.addEventListener('click', ()=>{ i = idx; render(); });
+          dotsWrap.appendChild(d);
+        });
+      }
+
+      function render(){
+        imgs.forEach((img, idx)=> img.classList.toggle('active', idx===i));
+        Array.from(dotsWrap.children).forEach((d, idx)=> d.classList.toggle('on', idx===i));
+      }
+
+      prev.addEventListener('click', ()=>{
+        i = (i - 1 + imgs.length) % imgs.length;
+        render();
+      });
+      next.addEventListener('click', ()=>{
+        i = (i + 1) % imgs.length;
+        render();
+      });
+
+      // swipe for mobile
+      let x0 = null;
+      stage.addEventListener('touchstart', e=>{ x0 = e.touches[0].clientX; }, {passive:true});
+      stage.addEventListener('touchend', e=>{
+        if(x0===null) return;
+        const x1 = e.changedTouches[0].clientX;
+        const dx = x1 - x0;
+        if(Math.abs(dx) > 35){
+          if(dx < 0) next.click(); else prev.click();
+        }
+        x0 = null;
+      }, {passive:true});
+
+      buildDots();
+      render();
+    })();
+
+    // Birthday countdown (every year) — 06 Apr
+    const pad2 = n => String(n).padStart(2,'0');
+
+    function nextBirthday(monthIndex, day){
+      const now = new Date();
+      const y = now.getFullYear();
+      let t = new Date(y, monthIndex, day, 0, 0, 0, 0);
+      if(t <= now) t = new Date(y + 1, monthIndex, day, 0, 0, 0, 0);
+      return t;
+    }
+
+    function tickBirthday(){
+      const target = nextBirthday(3, 6); // Apr=3, day=6
+      const now = new Date();
+      let diff = target - now;
+      if(diff < 0) diff = 0;
+
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hours = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+
+      document.getElementById('bDays').textContent  = pad2(days);
+      document.getElementById('bHours').textContent = pad2(hours);
+      document.getElementById('bMins').textContent  = pad2(mins);
+      document.getElementById('bSecs').textContent  = pad2(secs);
+    }
+
+    tickBirthday();
+    setInterval(tickBirthday, 1000);
+  </script>
+</body>
+</html>
