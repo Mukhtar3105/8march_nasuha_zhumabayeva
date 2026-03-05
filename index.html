@@ -130,7 +130,7 @@
       background: linear-gradient(to right, transparent, rgba(181,143,152,.60), transparent);
     }
 
-    /* ✅ текст чуть больше */
+    /* text */
     .p{
       font-size: 22px;
       line-height: 1.95;
@@ -157,7 +157,7 @@
       letter-spacing: .01em;
     }
 
-    /* ✅ Логотип сверху красиво (НЕ fixed) */
+    /* Logo */
     .hero-logo{
       width: min(220px, 70vw);
       height:auto;
@@ -480,8 +480,6 @@
     <section id="top">
       <div class="card">
         <div class="hero">
-
-          <!-- ✅ Логотип сверху, красиво, но НЕ fixed -->
           <img class="hero-logo" src="./GEN_Wing_positive(filled)_RGB_low.png" alt="Genesis">
 
           <p class="caps">Genesis Auto Kazakhstan</p>
@@ -500,6 +498,8 @@
             <a class="btn" href="#congrats">Открыть поздравление</a>
             <button class="btn secondary" type="button" id="btnShare">Поделиться</button>
             <button class="btn secondary" type="button" id="btnPrint">Печать / PDF</button>
+            <!-- ✅ ДОБАВЛЕНО -->
+            <button class="btn secondary" type="button" id="btnDownloadAll">Скачать все изображения</button>
           </div>
 
           <p class="small" id="shareHint" style="display:none; margin-top:10px;">
@@ -762,7 +762,6 @@
         });
       }, { threshold: 0.14 });
       cards.forEach(c=>io.observe(c));
-      // first card immediate
       if(cards[0]) cards[0].classList.add('revealed');
     })();
 
@@ -782,7 +781,6 @@
       const dotsWrap = document.getElementById('gDots');
       const prev = document.getElementById('gPrev');
       const next = document.getElementById('gNext');
-
       let i = 0;
 
       function buildDots(){
@@ -794,7 +792,6 @@
           dotsWrap.appendChild(d);
         });
       }
-
       function render(){
         imgs.forEach((img, idx)=> img.classList.toggle('active', idx===i));
         Array.from(dotsWrap.children).forEach((d, idx)=> d.classList.toggle('on', idx===i));
@@ -875,7 +872,6 @@
           await navigator.clipboard.writeText(location.href);
           toast();
         }catch(e){
-          // fallback
           const ta = document.createElement('textarea');
           ta.value = location.href;
           document.body.appendChild(ta);
@@ -887,21 +883,45 @@
       }
 
       btnShare.addEventListener('click', async ()=>{
-        const data = {
-          title: document.title,
-          text: 'Поздравление с 8 Марта',
-          url: location.href
-        };
+        const data = { title: document.title, text: 'Поздравление с 8 Марта', url: location.href };
         if(navigator.share){
-          try{ await navigator.share(data); }
-          catch(e){ /* user cancelled */ }
+          try{ await navigator.share(data); } catch(e){}
         }else{
           await copyLink();
         }
       });
 
-      btnPrint.addEventListener('click', ()=>{
-        window.print();
+      btnPrint.addEventListener('click', ()=> window.print());
+    })();
+
+    // ✅ Download all images
+    (function downloadAll(){
+      const btn = document.getElementById('btnDownloadAll');
+      if(!btn) return;
+
+      const files = [
+        './main_photo.png',
+        './1_photo.png',
+        './2_photo.png',
+        './3_photo.png',
+        './4_photo.png',
+        './5_photo.png'
+      ];
+
+      function triggerDownload(url){
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = url.split('/').pop();
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      btn.addEventListener('click', async ()=>{
+        for(let i=0; i<files.length; i++){
+          triggerDownload(files[i]);
+          await new Promise(r => setTimeout(r, 250));
+        }
       });
     })();
   </script>
